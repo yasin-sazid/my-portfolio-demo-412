@@ -1,120 +1,108 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
+const skills = [
+  'JavaScript (ES6+)',
+  'React + Vite',
+  'Python',
+  'Java',
+  'Data Structures & Algorithms',
+  'SQL & NoSQL',
+  'Git & CI/CD',
+  'UI/UX Prototyping'
+]
+
+const projects = [
+  {
+    name: 'StudyBuddy',
+    description:
+      'A full-stack study planner with adaptive scheduling and real-time reminders.',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+    url: '#'
+  },
+  {
+    name: 'GraphVision',
+    description:
+      'An interactive algorithm visualizer for graphs (BFS, DFS, Dijkstra, A*).',
+    tech: ['TypeScript', 'D3.js', 'Vite', 'Jest'],
+    url: '#'
+  },
+  {
+    name: 'SecureNotes',
+    description:
+      'A privacy-first notes app using client-side encryption and biometric login.',
+    tech: ['React', 'Firebase', 'Web Crypto API', 'Tailwind CSS'],
+    url: '#'
+  }
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="portfolio">
+      <header className="hero-section">
+        <h1>Alex Morgan</h1>
+        <p className="tagline">Computer Science Student • Future Software Engineer</p>
+        <div className="hero-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div>
-          <h1>Yasin Sazid</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+      </header>
+
+      <section id="about" className="card">
+        <h2>About Me</h2>
+        <p>
+          Passionate about building accessible and efficient web applications,
+          currently pursuing a B.S. in Computer Science. Experienced in team
+          collaboration, competitive programming, and full-stack prototyping.
+        </p>
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      <section id="skills" className="card">
+        <h2>Key Skills</h2>
+        <div className="skills-grid">
+          {skills.map((skill) => (
+            <span key={skill} className="skill-item">
+              {skill}
+            </span>
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section id="projects" className="card">
+        <h2>Featured Projects</h2>
+        <div className="projects-grid">
+          {projects.map((project) => (
+            <article key={project.name} className="project-card">
+              <h3>{project.name}</h3>
+              <p>{project.description}</p>
+              <div className="project-tech">
+                {project.tech.map((t) => (
+                  <span key={t} className="tech-chip">
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a className="project-link" href={project.url}>
+                View details
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="contact" className="card contact">
+        <h2>Contact</h2>
+        <p>
+          Email: <a href="mailto:alex.morgan@example.com">alex.morgan@example.com</a>
+        </p>
+        <p>
+          GitHub: <a href="https://github.com/your-username">github.com/your-username</a>
+        </p>
+        <p>Open to internships and collaborative projects.</p>
+      </section>
+
+      <footer className="footer">© {new Date().getFullYear()} Alex Morgan • CS Portfolio</footer>
+    </div>
   )
 }
 
